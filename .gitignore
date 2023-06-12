@@ -1,0 +1,5 @@
+.idea
+venv
+ecom/migrations
+static
+db.sqlite3

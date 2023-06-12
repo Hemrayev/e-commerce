@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+{% load widget_tweaks static%}
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/x-icon" href="{% static 'shops.png' %}">
+    <title>Online sowda | Agza bolmak</title>
+
+
+    <style media="screen">
+        body {
+        {#margin: 0;#}
+            padding: 0;
+            font-family: sans-serif;
+            background:linear-gradient(to right, #ffffff00, #b2cce98a)
+        }
+
+        .box {
+            width: 500px;
+            padding: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background:#eef4fa00;
+            text-align: center;
+            transition: 0.25s;
+            margin-top: 50px
+        }
+
+        .box input[type="text"],
+        .box input[type="password"] {
+        {#border: 0;#}
+            background: none;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid #3498db;
+            padding: 10px 10px;
+            width: 250px;
+            outline: none;
+            color: black;
+            border-radius: 24px;
+            transition: 0.25s
+        }
+        {#.box input[type="file"]{#}
+        {#    background: none;#}
+        {#    display: block;#}
+        {#    margin: 20px auto;#}
+        {#    text-align: center;#}
+        {#    border: 2px solid #3498db;#}
+        {#padding: 10px 10px;#}
+        {#    width: 250px;#}
+        {#    outline: none;#}
+        {#    color: black;#}
+        {#    border-radius: 24px;#}
+        {#    transition: 0.25s#}
+        {#align-content: center;#}
+        {# } #}
+
+
+        .box h1 {
+            color: black;
+            text-transform: uppercase;
+            font-weight: 500
+        }
+
+        .box input[type="text"]:focus,
+        .box input[type="password"]:focus{
+            width: 300px;
+            border-color: #2ecc71
+        }
+        .box input[type="submit"] {
+        {#border: 0;#}
+            background: none;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid #cf7e7e;
+            padding: 10px 40px;
+            outline: none;
+            color: black;
+            border-radius: 24px;
+            transition: 0.25s;
+            cursor: pointer
+        }
+
+        .box input[type="submit"]:hover {
+            background: #cf7e7e
+        }
+
+        {#.forgot {#}
+        {#    text-decoration: underline#}
+        {##}
+
+        ul.social-network {
+            list-style: none;
+            display: inline;
+            margin-left: 0 !important;
+            padding: 0
+        }
+
+        ul.social-network li {
+            display: inline;
+            margin: 0 5px
+        }
+
+        .social-network a.icoFacebook:hover {
+            background-color: #3B5998
+        }
+
+        .social-network a.icoTwitter:hover {
+            background-color: #33ccff
+        }
+
+        .social-network a.icoGoogle:hover {
+            background-color: #BD3518
+        }
+
+        .social-network a.icoFacebook:hover i,
+        .social-network a.icoTwitter:hover i,
+        .social-network a.icoGoogle:hover i {
+            color: #fff
+        }
+
+        a.socialIcon:hover,
+        .socialHoverClass {
+            color: #44BCDD
+        }
+
+        .social-circle li a {
+            display: inline-block;
+            position: relative;
+            margin: 0 auto 0 auto;
+            border-radius: 50%;
+            text-align: center;
+            width: 50px;
+            height: 50px;
+            font-size: 20px
+        }
+
+        .social-circle li i {
+            margin: 0;
+            line-height: 50px;
+            text-align: center
+        }
+
+        .social-circle li a:hover i,
+        .triggeredHover {
+            transform: rotate(360deg);
+            transition: all 0.2s
+        }
+
+        .social-circle i {
+            color: #fff;
+            transition: all 0.8s;
+            transition: all 0.8s
+        }
+    </style>
+</head>
+<body>
+{% include "ecom/navbar.html" %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <form class="box" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h1><b>Müşderi girişi</b></h1>
+                    <p class="text-muted"> <b>Hasap döretmek üçin özüňiz barada maglumatlary girizmegiňizi haýyş edýäris!</b></p>
+                    <br>
+                    {% render_field userForm.first_name class="form-control" placeholder="Ady" %}
+                    {% render_field userForm.last_name class="form-control" placeholder="Familiýasy" %}
+                    {% render_field userForm.username class="form-control" placeholder="Ulanyjy ady" %}
+                    {% render_field userForm.password class="form-control" placeholder="Parol" %}
+                    {% render_field customerForm.address class="form-control" placeholder="Salgysy" %}
+                    {% render_field customerForm.mobile class="form-control" placeholder="Ykjam el telefony" %}
+                    <input type="file" name="profile_pic" accept="image/*" class="form-control" id="id_profile_pic"
+                           style=" width: 0.1px;
+                                   height: 0.1px;
+                                   opacity: 0;
+                                   overflow: hidden;
+                                   position: absolute;
+                                   z-index: -1;">
+                    <style>
+                        label:hover{
+                            background-color: #3498db;
+                        }
+                    </style>
+                    <label for="id_profile_pic"
+                           style=" cursor: pointer;
+                           display: inline-flex;
+                           align-items: center;
+                           border-radius: 4px;
+                           font-size: 14px;
+                           font-weight: 600;
+                           color: #777;
+                           font-size: 14px;
+                           padding: 10px 12px;
+                           border: 2px solid #3498db;
+                           border-radius: 24px;
+                           background-color: none;
+                           box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);">
+                        <svg style="height: 16px;
+                             margin-right: 4px;"
+                             aria-hidden="true"
+                             focusable="false"
+                             data-prefix="fas"
+                             data-icon="upload"
+                             class="svg-inline--fa fa-upload fa-w-16"
+                             role="img"
+                             xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 512 512"
+                        >
+                            <path fill="currentColor" d="M296 384h-80c-13.3 0-24-10.7-24-24V192h-87.7c-17.8 0-26.7-21.5-14.1-34.1L242.3 5.7c7.5-7.5 19.8-7.5 27.3 0l152.2 152.2c12.6 12.6 3.7 34.1-14.1 34.1H320v168c0 13.3-10.7 24-24 24zm216-8v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h136v8c0 30.9 25.1 56 56 56h80c30.9 0 56-25.1 56-56v-8h136c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"
+                            ></path>
+                        </svg>
+                        <span>Suratynyzy yuklan</span>
+                    </label>
+                    {#                    {% render_field customerForm.profile_pic class="form-control" %}#}
+
+                    <input type="submit" name="" value="Döret">
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+{#{% include "ecom/footer.html" %}#}
+
+</body>
+</html>
