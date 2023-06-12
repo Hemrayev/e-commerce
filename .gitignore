@@ -2,4 +2,5 @@
 venv
 ecom/migrations
 static
+__pycache__
 db.sqlite3
